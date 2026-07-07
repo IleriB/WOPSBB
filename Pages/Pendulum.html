@@ -71,24 +71,58 @@
         Hi! Look at this awsome pendulum simulation! 
     </div>
     
+
+    
 </body>
 <canvas </canvas id="simCanvas" width="1200" height=" 400"></canvas>
 <script>
     const canvas = document.getElementById("simCanvas");
     const ctx = canvas.getContext("2d");
     
-    let x = 600; 
-    let y = 250;
-    let r = 12
+    
+    let r = 12;
+    let len = 200;
+    let theta = Math.PI * 0;
+    let x = 600 + len* Math.sin(theta); 
+    let y = 50 + len* Math.cos(theta);
+    let h = Math.abs(x-600);
+    let w = Math.abs(y-50);
+    
+    let g = 9.81;
+    
 
+
+    ctx.fillStyle = "blue";
     ctx.beginPath();
     ctx.arc(x,y,r,0, Math.PI*2); /* arc ( x,y, radius, start angle, end angle)*/
+    ctx.fill();
+
+    ctx.fillStyle = "black";
+    ctx.beginPath();
     ctx.arc(600,50,5,0, Math.PI*2);
     ctx.fill();
-    
+
+    ctx.fillStroke = "black";
+    ctx.beginPath();
+    ctx.moveTo(600,55);
+    ctx.lineTo(x,(y-12));
+    ctx.stroke();
     
     function animate (){
-        ctx.clearRect(0,0,800,400)
+        ctx.clearRect(0,0,1200,400)
+
+        ctx.fillStyle = "blue";
+        ctx.beginPath();
+        ctx.arc(x,y,r,0, Math.PI*2); /* arc ( x,y, radius, start angle, end angle)*/
+        ctx.fill();
+
+        ctx.fillStroke = "black";
+        ctx.beginPath();
+        ctx.moveTo(600,55)
+        ctx.lineTo(x,(y-12))
+        ctx.stroke();
+        
+
 
     }
 
